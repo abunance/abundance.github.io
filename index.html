@@ -38,10 +38,9 @@
       }
     </style>
     <script>
-    function storage() {
-      var zip = document.getElementById("zipcode").value;
-      sessionStorage.setItem('zipcode', zip);
-    }
+    var zip = document.getElementById("zipcode").value;
+    console.log(zip);
+    
     </script>
 
     
@@ -65,7 +64,7 @@
     <h1>Abundance</h1>
     <p class="lead">Input your zipcode and season to get started.</p>
     <p class="lead">
-      <form name='form' method="post" action="info.html">
+      <form name='form' method="post">
         <div>
           <input type="text" class="form-control" placeholder="Zipcode" id="zipcode" pattern="\d{5}" required>
         </div>
