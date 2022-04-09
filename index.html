@@ -38,15 +38,14 @@
       }
     </style>
     <script>
-    var form = document.getElementById("form");
-      form.onclick = function(e){
-      e.preventDefault();
+ 
+    function process(){
       var zipcode = document.getElementById("zipcode").value;
       console.log(zipcode);
-    }
-    
-    var zip = document.getElementById("season").value;
-    console.log(zip);
+      var season = document.getElementById("season").value;
+      console.log(season);
+      document.getElementById("results").innerHTML = zipcode;
+    };
     
     </script>
 
@@ -69,9 +68,9 @@
 
   <main class="px-3">
     <h1>Abundance</h1>
-    <p class="lead">Input your zipcode and season to get started.</p>
+    <p class="lead">Input zipcode and season to get started.</p>
     <p class="lead">
-      <form name='form' action="" method="post">
+      <form name="form" action="" method="post" onsubmit="process()">
         <div>
           <input type="text" class="form-control" placeholder="Zipcode" id="zipcode" pattern="\d{5}" required>
         </div>
@@ -80,7 +79,7 @@
           <select class="form-select" name="seasons" id="season" required>
             <option selected disabled value>Select a Growing Season</option>
             <option value="1">Winter</option>
-            <option value="2">Spring</option>
+            <option value="">Spring</option>
             <option value="3">Summer</option>
             <option value="4">Autumn</option>
           </select>
@@ -89,6 +88,7 @@
           <input type="submit">
       </form>
     </p>
+    <p id="results"></p>
   </main>
 
   <footer class="mt-auto text-white-50">
