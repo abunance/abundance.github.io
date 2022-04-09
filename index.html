@@ -38,6 +38,13 @@
       }
     </style>
     <script>
+    var form = document.getElementById("form");
+      form.onclick = function(e){
+      e.preventDefault();
+      var zipcode = document.getElementById("zipcode").value;
+      console.log(zipcode);
+    }
+    
     var zip = document.getElementById("season").value;
     console.log(zip);
     
@@ -64,13 +71,13 @@
     <h1>Abundance</h1>
     <p class="lead">Input your zipcode and season to get started.</p>
     <p class="lead">
-      <form name='form' method="post">
+      <form name='form' action="" method="post">
         <div>
           <input type="text" class="form-control" placeholder="Zipcode" id="zipcode" pattern="\d{5}" required>
         </div>
         
         <div class="mt-2 mb-5">
-          <select class="form-select" name="seasons "id="season" required>
+          <select class="form-select" name="seasons" id="season" required>
             <option selected disabled value>Select a Growing Season</option>
             <option value="1">Winter</option>
             <option value="2">Spring</option>
