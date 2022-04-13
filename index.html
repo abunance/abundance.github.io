@@ -39,13 +39,27 @@
     </style>
     <script>
  
-    function process(){
+    /* function process(){
       var zipcode = document.getElementById("zipcode").value;
       console.log(zipcode);
       var season = document.getElementById("season").value;
       console.log(season);
-      document.getElementById("results").innerHTML = zipcode;
-    };
+      #document.getElementById("results").innerHTML = zipcode;
+    }; */
+
+    function lonlat() {
+	    var input = document.getElementById('zipcode');	
+	    var results = document.getElementById('results');
+	
+	    if (event.keyCode === 13 && input.value.length === 5) {
+        var zipCode = input.value;
+        var xhr = $.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + zipCode + '&key=AIzaSyDVPLLlJAQ679Frd0gu11khJ9mW02wsvWQ');
+        
+        xhr.done(function(data) {
+			    results.innerHTML = 'Latitude = ' + data.results[0].geometry.location.lat + ' ' + '<br>Longitude = ' + data.results[0].geometry.location.lng;
+		    });
+      } 
+    }
     
     </script>
 
@@ -70,7 +84,7 @@
     <h1>Abundance</h1>
     <p class="lead">Input zipcode and season to get started.</p>
     <p class="lead">
-      <form name="form" action="" method="post" onsubmit="process()">
+      <form name="form" action="" method="post" onsubmit="lonlat(); return false">
         <div>
           <input type="text" class="form-control" placeholder="Zipcode" id="zipcode" pattern="\d{5}" required>
         </div>
