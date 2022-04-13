@@ -66,6 +66,9 @@
     
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
+    <?PHP
+      echo shell_exec("python zip.py 'zipcode'");
+    ?>
   </head>
   <body class="d-flex h-100 text-center text-dark bg-light">
     
