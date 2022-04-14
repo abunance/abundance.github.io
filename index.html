@@ -47,7 +47,7 @@
       #document.getElementById("results").innerHTML = zipcode;
     }; */
 
-    function lonlat() {
+    /* function lonlat() {
 	    var input = document.getElementById('zipcode');	
 	    var results = document.getElementById('results');
 	
@@ -59,7 +59,7 @@
 			    results.innerHTML = 'Latitude = ' + data.results[0].geometry.location.lat + ' ' + '<br>Longitude = ' + data.results[0].geometry.location.lng;
 		    });
       } 
-    }
+    } */
     
     </script>
 
@@ -74,8 +74,8 @@
     <div>
       <h3 class="float-md-start mb-0">Abundance</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <a class="nav-link" href="/about">About</a>
       </nav>
     </div>
   </header>
@@ -99,11 +99,9 @@
           </select>
         </div>
         <!-- <a href="info.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white"> -->
-          <input type="submit">
+          <input href='/info' type="submit">
       </form>
     </p>
-    <% import pgeocode %>
-    <%= time.strftime("%d:%m:%y",time.localtime(time.time())) %>
     <p id="results"></p>
   </main>
 
