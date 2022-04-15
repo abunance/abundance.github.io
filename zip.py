@@ -4,7 +4,7 @@ import pandas
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 def index():
     return render_template("index.html")
         
@@ -19,5 +19,4 @@ def info():
     zipcode = country.query_postal_code(input)
     data.append(zipcode["latitude"])
     data.append(zipcode["longitude"])
-    print(data)
     return render_template("info.html")
