@@ -20,4 +20,4 @@ def info():
     data.append(zipcode["latitude"])
     data.append(zipcode["longitude"])
     print(data)
-    return render_template("info.html", data=data)
+    return render_template("info.html")
