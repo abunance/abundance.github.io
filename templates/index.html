@@ -29,13 +29,6 @@
           font-size: 3.5rem;
         }
       }
-      input:invalid {
-        border: 2px dashed red;
-      }
-
-      input:valid {
-        border: 2px solid green;
-      }
     </style>
     <script>
     </script>
@@ -63,7 +56,7 @@
     <p class="lead">
       <form action="/" method="POST">
         <div>
-          <p>{{error}}</p>
+          <p class="text-danger">{{error}}</p>
           <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode">
         </div>
         <div class="mt-2 mb-5">
