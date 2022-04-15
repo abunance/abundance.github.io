@@ -23,7 +23,9 @@
   <body class="d-flex h-100 text-center text-white bg-dark">
     <h1>yay</h1>
     <p>
-      {{gh}}
+      {% for element in data %}
+      <p>{{ element }} </p>
+  {% endfor %}
     </p>
     
   </body>
