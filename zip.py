@@ -9,12 +9,13 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
     else: 
-        return render_template("info.html")
+        gh = request.form.get['zipcode']
+        return render_template("info.html", gh=gh)
 
 #@app.route('/info', methods=['POST'])
 #def info():
     #data = []
-    #input = request.form['zipcode']
+    #input = request.form.get['zipcode']
     # country is always us
     #country = pgeocode.Nominatim('us')
         
@@ -23,3 +24,4 @@ def index():
     #data.append(zipcode["latitude"])
     #data.append(zipcode["longitude"])
     
+    #pattern="\d{5}"
