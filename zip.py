@@ -6,9 +6,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-  return render_template('index.html')
+  return render_template("index.html")
 
-@app.route('/info', methods='POST')
+@app.route('/info', methods=['POST'])
 def zipcode():
     if request.method == 'POST':
         input = request.form['zipcode']
@@ -20,6 +20,6 @@ def zipcode():
 
         lat = zipcode["latitude"]
         lon = zipcode["longitude"]
-        return render_template('info.html', lat=lat, lon=lon)
+        return render_template("info.html", lat=lat, lon=lon)
     else:
-        return render_template('index.html') 
+        return render_template("index.html") 
