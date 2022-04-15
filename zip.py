@@ -18,6 +18,7 @@ def index():
         zipcode = country.query_postal_code(input)
         data.append(zipcode["latitude"])
         data.append(zipcode["longitude"])
-        return render_template("info.html", data=data)
+        print(data)
+        #return render_template("info.html", data=data)
 
 #@app.route('/info', methods=['POST', 'GET'])
