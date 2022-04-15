@@ -22,8 +22,11 @@
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
     <h1>yay</h1>
-    <p>{{lon}}</p>
-    <p>{{lat}}</p>
+    <ul>
+      {% for item in data %}
+          <li>{{item}}</li>
+      {% endfor %}
+      </ul>
     
   </body>
 </html>
