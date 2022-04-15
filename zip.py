@@ -10,16 +10,13 @@ def index():
 
 @app.route('/info', methods=['POST'])
 def zipcode():
-    if request.method == 'POST':
-        input = request.form['zipcode']
-        # country is always us
-        country = pgeocode.Nominatim('us')
+    input = request.form['zipcode']
+    # country is always us
+    country = pgeocode.Nominatim('us')
         
-        # input zipcode --> make dynamic
-        zipcode = country.query_postal_code(input)
+    # input zipcode --> make dynamic
+    zipcode = country.query_postal_code(input)
 
-        lat = zipcode["latitude"]
-        lon = zipcode["longitude"]
-        return render_template("info.html", lat=lat, lon=lon)
-    else:
-        return render_template("index.html") 
+    lat = zipcode["latitude"]
+    lon = zipcode["longitude"]
+    return render_template("info.html", lat=lat, lon=lon)
