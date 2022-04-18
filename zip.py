@@ -18,7 +18,7 @@ def index():
             # country is always us
             country = pgeocode.Nominatim('us')
              
-            season = request.form['season']
+            season = request.form.get('season')
             zipcode = country.query_postal_code(input)
             data.append(zipcode["latitude"])
             data.append(zipcode["longitude"])
