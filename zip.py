@@ -18,10 +18,11 @@ def index():
             # country is always us
             country = pgeocode.Nominatim('us')
              
+            season = request.form['season']
             zipcode = country.query_postal_code(input)
             data.append(zipcode["latitude"])
             data.append(zipcode["longitude"])
-            return render_template("info.html", data=data)
+            return render_template("info.html", data=data, input=input, season=season)
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
