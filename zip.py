@@ -26,3 +26,7 @@ def index():
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
+
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template("about.html")

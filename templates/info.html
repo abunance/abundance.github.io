@@ -36,10 +36,10 @@
       <main class="px-4">
         <h1>Abundance</h1>
         <p class="lead">Here are crop reccomendations for {{input}} in {{season}}</p>
-        <!-- <table class="table table-light">
+        <table class="table table-light">
           <thead>
             <tr>
-              <th scope="col">ZIPCODE</th>
+              <th scope="col">{{input}}</th>
               <th scope="col">3</th>
               <th scope="col">6</th>
               <th scope="col">59</th>
@@ -51,8 +51,8 @@
               <th scope="col">Temperature</th>
             </tr>
           </thead>
-          <tbody>
-            {% for element in crops %}
+          <!-- <tbody>
+            {% for each in crops %}
             <tr>
               <th scope="row">{{cropname}}</th>
               <td>{{precp}}</td>
@@ -60,8 +60,8 @@
               <td>{{temp}}</td>
             </tr>
             {% endfor %}
-          </tbody>
-        </table> -->
+          </tbody> -->
+        </table>
         <p>
         {% for element in data %}
           <p>{{ element }} </p>
