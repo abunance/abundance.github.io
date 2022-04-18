@@ -20,13 +20,57 @@
     <script>
     </script>
   </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    <h1>yay</h1>
-    <p>
-      {% for element in data %}
-      <p>{{ element }} </p>
-  {% endfor %}
-    </p>
-    
+  <body class="d-flex h-100 text-center text-light bg-dark">
+        
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">Abundance</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link" href="/about">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="px-4">
+        <h1>Abundance</h1>
+        <p class="lead">Here are crop reccomendations for {{ZIPCODE}} in {{season}}</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ZIPCODE</th>
+              <th scope="col">3</th>
+              <th scope="col">6</th>
+              <th scope="col">59</th>
+            </tr>
+            <tr>
+              <th scope="col">Crop</th>
+              <th scope="col">Precipation</th>
+              <th scope="col">Sunlight</th>
+              <th scope="col">Temperature</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for element in crops %}
+            <tr>
+              <th scope="row">{{cropname}}</th>
+              <td>{{precp}}</td>
+              <td>{{sunl}}</td>
+              <td>{{temp}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p>
+        {% for element in data %}
+          <p>{{ element }} </p>
+        {% endfor %}
+        </p>
+      </main>
+      <footer class="mt-auto text-dark-50">
+        <p>Created by Ava and Alice </p>
+      </footer>
+    </div>
   </body>
 </html>
