@@ -51,23 +51,22 @@
               <th scope="col">Temperature</th>
             </tr>
           </thead>
-          <!-- <tbody>
+          <tbody>
             {% for each in crops %}
             <tr>
-              <th scope="row">{{cropname}}</th>
-              <td>{{precp}}</td>
-              <td>{{sunl}}</td>
-              <td>{{temp}}</td>
+              <th scope="row">{{each[0]}}</th>
+              <td>{{each[1]}}</td>
+              <td>{{each[2]}}</td>
+              <td>{{each[3]}}</td>
             </tr>
             {% endfor %}
-          </tbody> -->
+          </tbody>
         </table>
         <p>
         {% for element in data %}
           <p>{{ element }} </p>
         {% endfor %}
         </p>
-        {{crops}}
       </main>
       <footer class="mt-auto text-dark-50">
         <p>Created by Ava and Alice </p>

@@ -1,3 +1,4 @@
+# export FLASK_APP=zip.py
 import pgeocode
 import numpy
 import pandas
@@ -28,7 +29,8 @@ def index():
             
             # converting csv to html
             croptable = pandas.read_csv('crops.csv')
-            return render_template("info.html", data=data, input=input, season=season, crops=[croptable.to_html()], titles=[''])
+            cropdata = croptable['CROP','WATER', 'SUN (hrs)','TEMP min']
+            return render_template("info.html", data=data, input=input, season=season, crops=cropdata)
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
