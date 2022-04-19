@@ -27,11 +27,14 @@ def index():
             data.append(zipcode["latitude"])
             data.append(zipcode["longitude"])
             
+            #data = pd.read_csv('sample_data.csv')
+            #return render_template('table.html', tables=[data.to_html()], titles=[''])
+            
             # converting csv to html
             croptable = pandas.read_csv('crops.csv')
-            cropdata = croptable[['CROP','WATER','SUN','TEMP']].shape
+            cropdata = croptable[['CROP','WATER','SUN','TEMP']]
         
-            return render_template("info.html", data=data, input=input, season=season, crops=cropdata)
+            return render_template("info.html", data=data, input=input, season=season, crops=[cropdata.html()])
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
