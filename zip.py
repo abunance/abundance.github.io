@@ -29,7 +29,7 @@ def index():
             
             # converting csv to html
             croptable = pandas.read_csv('crops.csv')
-            cropdata = croptable['CROP','WATER', 'SUN (hrs)','TEMP min']
+            cropdata = croptable['CROP','WATER (inches/week)', 'SUN (hrs)','TEMP min']
             return render_template("info.html", data=data, input=input, season=season, crops=cropdata)
         else:
             error = "Invalid Zipcode"
