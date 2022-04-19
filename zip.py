@@ -31,10 +31,10 @@ def index():
             #return render_template('table.html', tables=[data.to_html()], titles=[''])
             
             # converting csv to html
-            croptable = pandas.read_csv('crops.csv')
-            cropdata = croptable[['CROP','WATER','SUN','TEMP']]
-        
-            return render_template("info.html", data=data, input=input, season=season, crops=[cropdata.html()])
+            collist = ['CROP','WATER','SUN','TEMP']
+            croptable = pandas.read_csv('crops.csv', usecols=collist)
+           
+            return render_template("info.html", data=data, input=input, season=season, crops=[croptable.to_html(index=False)], titles=[''])
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
