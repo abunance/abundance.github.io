@@ -27,7 +27,7 @@ def index():
             data.append(zipcode["longitude"])
             
             # converting csv to html
-            croptable = pd.read_csv('crops.csv')
+            croptable = pandas.read_csv('crops.csv')
             return render_template("info.html", data=data, input=input, season=season, crops=[croptable.to_html()], titles=[''])
         else:
             error = "Invalid Zipcode"
