@@ -5,6 +5,9 @@ import re
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
+df = pd.read_csv('crops.csv')
+df.to_csv('crops.csv', index=None)
+
 @app.route("/", methods=["POST", "GET"])
 def index():
     error = None
@@ -22,7 +25,10 @@ def index():
             zipcode = country.query_postal_code(input)
             data.append(zipcode["latitude"])
             data.append(zipcode["longitude"])
-            return render_template("info.html", data=data, input=input, season=season)
+            
+            # converting csv to html
+            croptable = pd.read_csv('crops.csv')
+            return render_template("info.html", data=data, input=input, season=season, crops=[croptable.to_html()], titles=[''])
         else:
             error = "Invalid Zipcode"
             return render_template("index.html", error=error)
