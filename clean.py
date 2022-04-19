@@ -1,5 +1,8 @@
 
 # Read file.txt
+from msilib.schema import tables
+
+
 with open('file.txt', 'r') as file:
     text = file.read()
 
