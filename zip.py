@@ -5,7 +5,7 @@ import re
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-df = pd.read_csv('crops.csv')
+df = pandas.read_csv('crops.csv')
 df.to_csv('crops.csv', index=None)
 
 @app.route("/", methods=["POST", "GET"])
