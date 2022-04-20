@@ -52,14 +52,16 @@
             </tr>
           </thead>
           <tbody>
-            <!-- {% for each in crops %}
-            <tr>
-              <th scope="row">{{each[0]}}</th>
-              <td>{{each[1]}}</td>
-              <td>{{each[2]}}</td>
-              <td>{{each[3]}}</td>
+            {% for crop in crops%}
+              {% for each in crop%}
+              <tr>
+                  <td>{{each[0]}}</td>
+                  <td>{{each[1]}}</td>
+                  <td>{{each[2]}}</td>
+                  <td>{{each[3]}}</td>
             </tr>
-            {% endfor %} -->
+            {% endfor %}
+          {% endfor %}
           </tbody>
         </table>
         <p>
@@ -67,15 +69,6 @@
           <p>{{ element }} </p>
         {% endfor %}
         </p>
-        <table>
-          <h1>
-          <!--Displaying the converted table-->
-               {% for table in crops %}
-              <h2>{{titles[loop.index]}}</h2>                            
-              {{ table|safe }}
-              {% endfor %}     
-          </h1> 
-      </table>
       </main>
       <footer class="mt-auto text-dark-50">
         <p>Created by Ava and Alice </p>
