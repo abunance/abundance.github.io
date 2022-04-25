@@ -16,18 +16,8 @@ def index():
         input = request.form['zipcode']
         season = request.form.get('season')
         
-        if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']:
-            data = []
-            """ # country is always us
-            country = pgeocode.Nominatim('us')
-             
-            season = request.form.get('season')
-            zipcode = country.query_postal_code(input)
-            data.append(zipcode["latitude"])
-            data.append(zipcode["longitude"]) """
-            
-        
-            # converting csv to html
+        if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']: 
+            # FEED SPECIFIC TEMPERATURE AND WATER
             x= .1
             y = 15
 
@@ -43,7 +33,7 @@ def index():
             croptable['similarity'] = weighted
             cropsort = croptable.sort_values(by=['similarity'])
     
-            return render_template("info.html", input=input, season=season, crops=[croptable.values.tolist()], titles=[''])
+            return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''])
         else:
             error = "Invalid Zipcode or Season"
             return render_template("index.html", error=error)
