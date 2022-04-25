@@ -31,7 +31,7 @@ def index():
             
         
             # converting csv to html
-            collist = ['CROP','WATER','SUN','TEMP']
+            collist = ['CROP','WATER','TEMP']
             croptable = pandas.read_csv('crops.csv', usecols=collist)
            
             return render_template("info.html", data=data, input=input, season=season, crops=[croptable.values.tolist()], titles=[''])
