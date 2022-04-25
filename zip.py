@@ -6,9 +6,6 @@ import re
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-df = pandas.read_csv('crops.csv')
-df.to_csv('crops.csv', index=None)
-
 @app.route("/", methods=["POST", "GET"])
 def index():
     error = None
@@ -21,20 +18,32 @@ def index():
         
         if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']:
             data = []
-            # country is always us
+            """ # country is always us
             country = pgeocode.Nominatim('us')
              
             season = request.form.get('season')
             zipcode = country.query_postal_code(input)
             data.append(zipcode["latitude"])
-            data.append(zipcode["longitude"])
+            data.append(zipcode["longitude"]) """
             
         
             # converting csv to html
-            collist = ['CROP','WATER','TEMP']
+            x= .1
+            y = 15
+
+            # converting csv to html
+            collist = ['CROP','WATERmm','TEMPC','WATER','TEMP']
             croptable = pandas.read_csv('crops.csv', usecols=collist)
-           
-            return render_template("info.html", data=data, input=input, season=season, crops=[croptable.values.tolist()], titles=[''])
+            weighted=[]
+            for index, row in croptable.iterrows():
+                T = row['TEMPC']
+                W = row['WATERmm']
+                weighted.append(abs(x-W)*.4/x+abs(y-T)*.6/y)
+
+            croptable['similarity'] = weighted
+            cropsort = croptable.sort_values(by=['similarity'])
+    
+            return render_template("info.html", input=input, season=season, crops=[croptable.values.tolist()], titles=[''])
         else:
             error = "Invalid Zipcode or Season"
             return render_template("index.html", error=error)

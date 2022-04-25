@@ -42,7 +42,6 @@
               <th scope="col">{{input}}</th>
               <th scope="col">3</th>
               <th scope="col">59</th>
-              <th scope="col">6</th>
             </tr>
             <tr>
               <th scope="col">Crop</th>
@@ -55,18 +54,13 @@
               {% for each in crop%}
               <tr>
                   <td>{{each[0]}}</td>
-                  <td>{{each[1]}}</td>
-                  <td>{{each[2]}}</td>
+                  <td>{{each[3]}}</td>
+                  <td>{{each[4]}}</td>
             </tr>
             {% endfor %}
           {% endfor %}
           </tbody>
         </table>
-        <p>
-        {% for element in data %}
-          <p>{{ element }} </p>
-        {% endfor %}
-        </p>
       </main>
       <footer class="mt-auto text-dark-50">
         <p>Created by Ava and Alice </p>
