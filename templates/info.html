@@ -45,8 +45,8 @@
             </tr>
             <tr>
               <th scope="col">Crop</th>
-              <th scope="col">Precipation</th>
-              <th scope="col">Temperature</th>
+              <th scope="col">Precipation (inches/week)</th>
+              <th scope="col">Temperature (F)</th>
             </tr>
           </thead>
           <tbody>
@@ -54,8 +54,8 @@
               {% for each in crop%}
               <tr>
                   <td>{{each[0]}}</td>
+                  <td>{{each[1]}}</td>
                   <td>{{each[3]}}</td>
-                  <td>{{each[4]}}</td>
             </tr>
             {% endfor %}
           {% endfor %}

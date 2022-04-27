@@ -49,8 +49,11 @@ def index():
 
             # sort crops by similarity
             cropsort = croptable.sort_values(by=['similarity'])
-    
-            return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=x, temp=y)
+
+            #Convert temperature and precp values
+            actualtemp = (y*9/5)+32
+            actualwater = z*24*7/25.4
+            return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=actualwater, temp=actualtemp)
         else:
             error = "Invalid Zipcode or Season"
             return render_template("index.html", error=error)
