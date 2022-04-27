@@ -1,6 +1,5 @@
 # export FLASK_APP=zip.py
-import pgeocode
-import numpy
+import csv
 import pandas
 import re
 from flask import Flask, render_template, request
@@ -17,13 +16,20 @@ def index():
         season = request.form.get('season')
         
         if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']: 
+            with open('weather.csv', mode='r') as infile:
+                reader = csv.reader(infile)
+                weatherdata = {rows[0]:rows[3] for rows in reader}
+            keys = list(weatherdata.keys())
+            values = list(weatherdata.values())
+
+            index = keys.index(input)
+            x = values[index]
             # FEED SPECIFIC TEMPERATURE AND WATER
-            x= .1
             y = 15
 
             # converting csv to html
-            collist = ['CROP','WATERmm','TEMPC','WATER','TEMP']
-            croptable = pandas.read_csv('crops.csv', usecols=collist)
+            croplist = ['CROP','WATERmm','TEMPC','WATER','TEMP']
+            croptable = pandas.read_csv('crops.csv', usecols=croplist)
             weighted=[]
             for index, row in croptable.iterrows():
                 T = row['TEMPC']
@@ -33,7 +39,7 @@ def index():
             croptable['similarity'] = weighted
             cropsort = croptable.sort_values(by=['similarity'])
     
-            return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''])
+            return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=x, temp=y)
         else:
             error = "Invalid Zipcode or Season"
             return render_template("index.html", error=error)
