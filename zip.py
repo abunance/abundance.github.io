@@ -17,9 +17,22 @@ def index():
         
         if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']: 
             # read in weather data as a dict
-            with open('weather.csv', mode='r') as infile:
-                reader = csv.reader(infile)
-                weatherdata = {rows[0]:rows[3] for rows in reader}
+            if season == 'winter':
+                with open('winter.csv', mode='r') as infile:
+                    reader = csv.reader(infile)
+                    weatherdata = {rows[0]:rows[3] for rows in reader}
+            if season == 'spring':
+                with open('spring.csv', mode='r') as infile:
+                    reader = csv.reader(infile)
+                    weatherdata = {rows[0]:rows[3] for rows in reader}
+            if season == 'summer':
+                with open('summer.csv', mode='r') as infile:
+                    reader = csv.reader(infile)
+                    weatherdata = {rows[0]:rows[3] for rows in reader}
+            if season == 'autumn':
+                with open('autumn.csv', mode='r') as infile:
+                    reader = csv.reader(infile)
+                    weatherdata = {rows[0]:rows[3] for rows in reader}
 
             # extract zipcode keys and precp values 
             keys = list(weatherdata.keys())
