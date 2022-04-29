@@ -17,7 +17,7 @@
 
     <style>
       body {
-        background-image: url_for('static', filename='images/background.jpg');
+        background-image: url({{ url_for('static', filename='background.jpg') }});
         background-repeat: no-repeat;
         background-color: #cccccc;
         background-size: cover;
@@ -36,7 +36,7 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
     <div>
-      <img src="images/logo.JPG" class='justify-content-left' width="50" height="50">
+      <img src="{{url_for('static', filename='logo.jpg')}}" class='justify-content-left' width="50" height="50">
       
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -62,7 +62,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="row justify-content-center">
             <div class="col-lg-4">
-            <img src="{{url_for('static', filename='templates/images/alice.jpg')}}" class="rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img src="{{url_for('static', filename='alice.jpg')}}" class="rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
     
             <h2>Alice Zehner</h2>
             <p>Alice is a 2025 majoring in Course 1 (Civil and Environmental Engineering). She is especially interested in atmospheric chemistry and climate and water issues.</p>
