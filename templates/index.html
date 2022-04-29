@@ -20,10 +20,7 @@
         background-attachment: fixed;
       }
     </style>
-    <script>
-    </script>
-
-    
+  
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
   </head>
@@ -41,7 +38,9 @@
   </header>
 
   <main class="px-3">
-    <h1>Abundance</h1>
+    <img src="{{url_for('static', filename='logo.png')}}" class="center" style="height:200px;width:auto">
+    <p class="lead">Welcome to Abundance.</p>
+    <p class="lead">Create your oasis</p>
     <p class="lead">Input zipcode and season to get started.</p>
     <p class="lead">
       <form action="/" method="POST">

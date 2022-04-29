@@ -17,7 +17,7 @@
 
     <style>
       body {
-        background-image: url({{ url_for('static', filename='background.jpg') }});
+        background-image: url({{url_for('static', filename='background.jpg')}});
         background-repeat: no-repeat;
         background-color: #cccccc;
         background-size: cover;
@@ -36,8 +36,7 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
     <div>
-      <img src="{{url_for('static', filename='logo.jpg')}}" class='justify-content-left' width="50" height="50">
-      
+      <h3 class="float-md-start mb-0">Abundance</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/about">About</a>
@@ -46,9 +45,7 @@
   </header>
 
   <main class="px-3">
-    <div class="bg-image">
-    </div>
-    <h1>About</h1>
+    <h1>About the Project</h1>
     <p class="lead">Abundance recommends the optimal crops to plant for small-scale gardeners based on season, location, and historical weather data.
     We created this website in response to the many issues that agriculture faces today, such as food insecurity, water shortages, food waste, etc. 
     This website draws from Google Earth Engine satellite climate data to estimate the rainfall and temperature for a given zipcode. 
@@ -59,7 +56,7 @@
 
     <div class="container marketing">
 
-        <!-- Three columns of text below the carousel -->
+      <h1>Meet the Creators</h1>
         <div class="row justify-content-center">
             <div class="col-lg-4">
             <img src="{{url_for('static', filename='alice.jpg')}}" class="rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
