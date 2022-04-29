@@ -2,7 +2,7 @@
 import csv
 import pandas
 import re
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
@@ -53,6 +53,7 @@ def index():
             #Convert temperature and precp values
             actualtemp = (y*9/5)+32
             actualwater = z*24*7/25.4
+
             return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=actualwater, temp=actualtemp)
         else:
             error = "Invalid Zipcode or Season"
