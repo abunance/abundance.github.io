@@ -42,10 +42,12 @@ def index():
             index = keys.index(input)
 
             # FEED SPECIFIC TEMPERATURE AND WATER
-            x = values[index]
-            y = 15
+            x = values[index][0]
+            y = values[index][1]
+
             #must convert x string to float for calculations
-            z = float(x)
+            x = float(x)
+            y = float(y)
 
             # converting csv to html
             croplist = ['CROP','WATERmm','TEMPC','WATER','TEMP']
@@ -57,7 +59,7 @@ def index():
                 T = row['TEMPC']
                 W = row['WATERmm']
                 # created weighted similarity to region's temp and water
-                weighted.append(abs(z-W)*.4/z+abs(y-T)*.6/y)
+                weighted.append(abs(x-W)*.4/x+abs(y-T)*.6/y)
             croptable['similarity'] = weighted
 
             # sort crops by similarity
@@ -65,7 +67,7 @@ def index():
 
             #Convert temperature and precp values
             actualtemp = (y*9/5)+32
-            actualwater = z*24*7/25.4
+            actualwater = x*24*7/25.4
 
             return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=actualwater, temp=actualtemp)
         else:

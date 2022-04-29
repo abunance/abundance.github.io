@@ -4,9 +4,9 @@ import csv
 import pandas
 
 # read in weather data as a dict
-with open('weather.csv', mode='r') as infile:
+with open('summer.csv', mode='r') as infile:
     reader = csv.reader(infile)
-    weatherdata = {rows[0]:rows[3] for rows in reader}
+    weatherdata = {rows[0]:[rows[3], rows[5]] for rows in reader}
 
 # extract zipcode keys and precp values 
 keys = list(weatherdata.keys())
@@ -16,10 +16,12 @@ values = list(weatherdata.values())
 index = keys.index(input)
 
 # FEED SPECIFIC TEMPERATURE AND WATER
-x = values[index]
-y = 15
+x = values[index][0]
+y = values[index][1]
+
 #must convert x string to float for calculations
-z = float(x)
+x = float(x)
+y = float(y)
 
 # converting csv to html
 croplist = ['CROP','WATERmm','TEMPC','WATER','TEMP']
@@ -31,7 +33,7 @@ for index, row in croptable.iterrows():
     T = row['TEMPC']
     W = row['WATERmm']
     # created weighted similarity to region's temp and water
-    weighted.append(abs(z-W)*.4/z+abs(y-T)*.6/y)
+    weighted.append(abs(x-W)*.4/x+abs(y-T)*.6/y)
 croptable['similarity'] = weighted
 
 # sort crops by similarity
