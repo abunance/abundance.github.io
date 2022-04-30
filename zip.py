@@ -20,19 +20,19 @@ def index():
             if season == 'winter':
                 with open('winter.csv', mode='r') as infile:
                     reader = csv.reader(infile)
-                    weatherdata = {rows[0]:rows[3] for rows in reader}
+                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'spring':
                 with open('spring.csv', mode='r') as infile:
                     reader = csv.reader(infile)
-                    weatherdata = {rows[0]:rows[3] for rows in reader}
+                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'summer':
                 with open('summer.csv', mode='r') as infile:
                     reader = csv.reader(infile)
-                    weatherdata = {rows[0]:rows[3] for rows in reader}
+                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'autumn':
                 with open('autumn.csv', mode='r') as infile:
                     reader = csv.reader(infile)
-                    weatherdata = {rows[0]:rows[3] for rows in reader}
+                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
 
             # extract zipcode keys and precp values 
             keys = list(weatherdata.keys())
@@ -77,3 +77,7 @@ def index():
 @app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
+
+@app.route("/code", methods=["GET"])
+def about():
+    return render_template("code.html")
