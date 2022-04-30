@@ -79,5 +79,5 @@ def about():
     return render_template("about.html")
 
 @app.route("/code", methods=["GET"])
-def about():
+def code():
     return render_template("code.html")
