@@ -19,21 +19,37 @@ def index():
             # read in weather data as a dict
             if season == 'winter':
                 with open('winter.csv', mode='r') as infile:
-                    reader = csv.reader(infile)
-                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'spring':
-                with open('spring.csv', mode='r') as infile:
-                    reader = csv.reader(infile)
-                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                if int(input) >= 16850:
+                    with open('spring1.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                else:
+                    with open('spring.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'summer':
-                with open('summer.csv', mode='r') as infile:
-                    reader = csv.reader(infile)
-                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                if int(input) >= 16850:
+                    with open('summer1.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                else:
+                    with open('summer.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'autumn':
-                with open('autumn.csv', mode='r') as infile:
-                    reader = csv.reader(infile)
-                    weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
-
+                if int(input) >= 16850:
+                    with open('autumn1.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+                else:
+                    with open('autumn.csv', mode='r') as infile:
+                        reader = csv.reader(infile)
+                        weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
+            
+            
             # extract zipcode keys and precp values 
             keys = list(weatherdata.keys())
             values = list(weatherdata.values())
