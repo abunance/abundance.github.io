@@ -12,7 +12,7 @@ def index():
         return render_template("index.html")
     else: 
         pattern= re.compile("\d{5}")
-        input = str(request.form['zipcode'])
+        input = request.form['zipcode']
         season = request.form.get('season')
         
         if pattern.match(input) and season in ['winter', 'spring', 'summer', 'autumn']: 
@@ -22,7 +22,7 @@ def index():
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'spring':
-                if int(input) >= 16850:
+                if int(input) >= 49650:
                     with open('spring1.csv', mode='r') as infile:
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
@@ -31,7 +31,7 @@ def index():
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'summer':
-                if int(input) >= 16850:
+                if int(input) >= 49650:
                     with open('summer1.csv', mode='r') as infile:
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
@@ -40,7 +40,7 @@ def index():
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
             if season == 'autumn':
-                if int(input) >= 16850:
+                if int(input) >= 49650:
                     with open('autumn1.csv', mode='r') as infile:
                         reader = csv.reader(infile)
                         weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
@@ -82,8 +82,8 @@ def index():
             cropsort = croptable.sort_values(by=['similarity'])
 
             #Convert temperature and precp values
-            actualtemp = (y*9/5)+32
-            actualwater = x*24*7/25.4
+            actualtemp = round((y*9/5)+32,1)
+            actualwater = round(x*24*7/25.4, 2)
 
             return render_template("info.html", input=input, season=season, crops=[cropsort.values.tolist()], titles=[''], prep=actualwater, temp=actualtemp)
         else:
