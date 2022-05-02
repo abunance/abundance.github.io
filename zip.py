@@ -6,9 +6,6 @@ from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
-
 @app.route("/", methods=["POST", "GET"])
 def index():
     error = None
@@ -90,3 +87,6 @@ def about():
 @app.route("/code", methods=["GET"])
 def code():
     return render_template("code.html")
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
