@@ -1,0 +1,8 @@
+git clone (url)
+ubuntu-alice
+
+ssh -i alice root@138.197.64.19
+
+
+git pull (url)
+- to make changes
