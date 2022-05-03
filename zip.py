@@ -21,6 +21,7 @@ def index():
             if season == 'winter':
                 file = 'winter.csv'
             if season == 'spring':
+                # zipcodes are stored in multiple files. choose file based on zipcode
                 if int(input) >= 49650:
                     file = 'spring1.csv'
                 else:
@@ -36,6 +37,7 @@ def index():
                 else:
                     file = 'autumn.csv'
             
+            #read file into a dictionary with the zipcode as the key and a list as the value
             with open(file, mode='r') as infile:
                 reader = csv.reader(infile)
                 weatherdata = {rows[0]:[rows[1], rows[2]] for rows in reader}
@@ -88,5 +90,6 @@ def about():
 def code():
     return render_template("code.html")
 
+# needed to host on the correct IP and port
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
